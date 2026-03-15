@@ -1,0 +1,86 @@
+<h1 align="center">Hey, I'm Farhad <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="30"></h1>
+
+<p align="center">
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=FF4444&center=true&vCenter=true&random=false&width=550&lines=CTO+%40+OnePharma;iOS+Developer+%7C+Swift+%26+SwiftUI;Machine+Learning+Enthusiast;Building+cool+things+for+fun" alt="Typing SVG" />
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=Farhad1618&label=Profile%20Views&color=ff4444&style=for-the-badge" alt="Profile Views" />
+</p>
+
+---
+
+## 🛠 Tech Stack
+
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=swift,python,js,firebase,tensorflow,docker,git,github&theme=dark" alt="Tech Stack" />
+  </a>
+</p>
+
+---
+
+## 📊 GitHub Stats
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=Farhad1618&show_icons=true&theme=radical&hide_border=true&bg_color=0d1117&title_color=ff4444&icon_color=ff4444&text_color=c9d1d9&ring_color=ff4444" alt="GitHub Stats" height="170" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Farhad1618&theme=radical&hide_border=true&background=0d1117&ring=ff4444&fire=ff4444&currStreakLabel=ff4444&sideLabels=ff4444&currStreakNum=c9d1d9&sideNums=c9d1d9&dates=666666" alt="GitHub Streak" height="170" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Farhad1618&layout=compact&theme=radical&hide_border=true&bg_color=0d1117&title_color=ff4444&text_color=c9d1d9" alt="Top Languages" height="170" />
+</p>
+
+---
+
+## 🏆 Achievements
+
+<p align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=Farhad1618&theme=darkhub&no-frame=true&no-bg=true&column=6&title_color=ff4444" alt="Trophies" />
+</p>
+
+---
+
+## 🚀 Featured Projects
+
+<p align="center">
+  <a href="https://github.com/Farhad1618/TikTok">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Farhad1618&repo=TikTok&theme=radical&hide_border=true&bg_color=0d1117&title_color=ff4444&icon_color=ff4444&text_color=c9d1d9" alt="TikTok" />
+  </a>
+  <a href="https://github.com/Farhad1618/Network-Intrusion-Detection-CNN">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Farhad1618&repo=Network-Intrusion-Detection-CNN&theme=radical&hide_border=true&bg_color=0d1117&title_color=ff4444&icon_color=ff4444&text_color=c9d1d9" alt="Network Intrusion Detection" />
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/Farhad1618/AirBnb">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Farhad1618&repo=AirBnb&theme=radical&hide_border=true&bg_color=0d1117&title_color=ff4444&icon_color=ff4444&text_color=c9d1d9" alt="AirBnb" />
+  </a>
+  <a href="https://github.com/Farhad1618/gender-classification-ddd">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Farhad1618&repo=gender-classification-ddd&theme=radical&hide_border=true&bg_color=0d1117&title_color=ff4444&icon_color=ff4444&text_color=c9d1d9" alt="Gender Classification DDD" />
+  </a>
+</p>
+
+---
+
+## ⚡ Currently Working On
+
+- 🏥 **[OnePharma](https://github.com/OnePharma)** — Revolutionizing pharma tech as Co-founder & CTO
+- 🔮 **Ragnarok** — Building a Graph RAG knowledge platform
+
+---
+
+## 🐍 Contribution Snake
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Farhad1618/Farhad1618/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Farhad1618/Farhad1618/output/github-snake.svg" />
+  <img alt="github-snake" src="https://raw.githubusercontent.com/Farhad1618/Farhad1618/output/github-snake-dark.svg" />
+</picture>
+
+---
+
+<p align="center">
+  <em>"I'm just a guy who's a dev for fun"</em>
+</p>
