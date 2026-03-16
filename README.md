@@ -35,52 +35,6 @@
 
 ---
 
-## 🏆 Achievements
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=Farhad1618&theme=darkhub&no-frame=true&no-bg=true&column=6&title_color=ff4444" alt="Trophies" />
-</p>
-
----
-
-## 🚀 Featured Projects
-
-<p align="center">
-  <a href="https://github.com/Farhad1618/TikTok">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Farhad1618&repo=TikTok&theme=radical&hide_border=true&bg_color=0d1117&title_color=ff4444&icon_color=ff4444&text_color=c9d1d9" alt="TikTok" />
-  </a>
-  <a href="https://github.com/Farhad1618/Network-Intrusion-Detection-CNN">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Farhad1618&repo=Network-Intrusion-Detection-CNN&theme=radical&hide_border=true&bg_color=0d1117&title_color=ff4444&icon_color=ff4444&text_color=c9d1d9" alt="Network Intrusion Detection" />
-  </a>
-</p>
-<p align="center">
-  <a href="https://github.com/Farhad1618/AirBnb">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Farhad1618&repo=AirBnb&theme=radical&hide_border=true&bg_color=0d1117&title_color=ff4444&icon_color=ff4444&text_color=c9d1d9" alt="AirBnb" />
-  </a>
-  <a href="https://github.com/Farhad1618/gender-classification-ddd">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Farhad1618&repo=gender-classification-ddd&theme=radical&hide_border=true&bg_color=0d1117&title_color=ff4444&icon_color=ff4444&text_color=c9d1d9" alt="Gender Classification DDD" />
-  </a>
-</p>
-
----
-
-## ⚡ Currently Working On
-
-- 🏥 **[OnePharma](https://github.com/OnePharma)** — Revolutionizing pharma tech as Co-founder & CTO
-- 🔮 **Ragnarok** — Building a Graph RAG knowledge platform
-
----
-
-## 🐍 Contribution Snake
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Farhad1618/Farhad1618/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Farhad1618/Farhad1618/output/github-snake.svg" />
-  <img alt="github-snake" src="https://raw.githubusercontent.com/Farhad1618/Farhad1618/output/github-snake-dark.svg" />
-</picture>
-
----
-
 <p align="center">
   <em>"I'm just a guy who's a dev for fun"</em>
 </p>
