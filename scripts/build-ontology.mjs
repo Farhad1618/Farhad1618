@@ -68,8 +68,6 @@ const THEMES = {
   dark: {
     file: "assets/ontology-dark.svg",
     accent: "#ff4444",
-    core: "#ff4444",
-    coreText: "#e6edf3",
     domain: "#c9d1d9",
     domainText: "#e6edf3",
     leaf: "#7d8590",
@@ -77,13 +75,11 @@ const THEMES = {
     edge: "#484f58",
     cross: "#6e7681",
     ambient: "#8b949e",
-    glow: 3.4, // accent bloom; carries the red on #0d1117
+    glow: 2.6, // accent bloom; carries the red on #0d1117
   },
   light: {
     file: "assets/ontology-light.svg",
     accent: "#e5342f",
-    core: "#e5342f",
-    coreText: "#1f2328",
     domain: "#424a53",
     domainText: "#1f2328",
     leaf: "#818b98",
@@ -191,13 +187,15 @@ function svg(theme) {
   @keyframes spin{to{transform:rotate(360deg)}}
   @keyframes spinBack{to{transform:rotate(-360deg)}}
   @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.22)}}
-  /* a signal leaving the core and arriving somewhere. Decorative, so unlike
+  /* A signal leaving the core and arriving somewhere. Decorative, so unlike
      everything else it rests hidden — a renderer with no motion should show
-     the structure, not a pile of dots parked at the origin. */
+     the structure, not a pile of dots parked at the origin. It stays dark
+     until a quarter of the way out, so five blooming dots don't pool into an
+     aura around the hollow centre. */
   @keyframes flow{
     0%{offset-distance:0%;opacity:0}
-    14%{opacity:1}
-    82%{opacity:1}
+    26%{opacity:1}
+    84%{opacity:1}
     100%{offset-distance:100%;opacity:0}
   }
 
@@ -209,10 +207,10 @@ function svg(theme) {
   .ring{fill:none;stroke:${c.accent};stroke-width:1.5;opacity:0;animation:ring 3.6s cubic-bezier(.2,.6,.3,1) 3.2s infinite}
   .halo{--o:.55;fill:none;stroke:${c.accent};stroke-width:1.1;stroke-dasharray:2 3.4;opacity:.55;transform-box:fill-box;transform-origin:center;animation:ghost .7s ease-out both,spin 24s linear infinite}
 
-  /* the core: two counter-rotating dashed shells around a solid centre */
-  .shell{--o:.5;fill:none;stroke:${c.accent};opacity:.5;transform-box:fill-box;transform-origin:center}
-  .shell-a{stroke-width:1.1;stroke-dasharray:14 9;animation:ghost .9s ease-out .5s both,spin 34s linear infinite}
-  .shell-b{--o:.34;opacity:.34;stroke-width:.9;stroke-dasharray:2 5;animation:ghost .9s ease-out .7s both,spinBack 21s linear infinite}
+  /* the core: two counter-rotating dashed shells around an empty centre */
+  .shell{--o:.66;fill:none;stroke:${c.accent};opacity:.66;transform-box:fill-box;transform-origin:center}
+  .shell-a{stroke-width:1.3;stroke-dasharray:14 9;animation:ghost .9s ease-out .5s both,spin 34s linear infinite}
+  .shell-b{--o:.44;opacity:.44;stroke-width:.9;stroke-dasharray:2 5;animation:ghost .9s ease-out .7s both,spinBack 21s linear infinite}
   .pulse{opacity:0;fill:${c.accent};animation:flow var(--d,2.6s) cubic-bezier(.55,0,.45,1) var(--t,0s) infinite}
   .leaf-b{transform-box:fill-box;transform-origin:center;animation:breathe 5.5s ease-in-out var(--t,0s) infinite}
   .recv{fill:none;stroke:${c.accent};stroke-width:1.2;opacity:0;transform-box:fill-box;transform-origin:center;animation:ring 2.7s cubic-bezier(.2,.6,.3,1) var(--t,0s) infinite}
@@ -288,23 +286,15 @@ function svg(theme) {
 
   for (const n of NODES) {
     const d = delayFor(n);
-    const fill = n.kind === "core" ? c.core : n.kind === "domain" ? c.domain : c.leaf;
+    const fill = n.kind === "domain" ? c.domain : c.leaf;
 
     if (n.kind === "core") {
-      // two counter-rotating shells and an expanding ring, around a solid centre
+      // Hollow. Two counter-rotating shells and a ring that expands out of the
+      // gap between them — the centre is held by what turns around it rather
+      // than by anything sitting in it.
       out.push(`<circle class="shell shell-a" cx="${n.x}" cy="${n.y}" r="27"/>`);
       out.push(`<circle class="shell shell-b" cx="${n.x}" cy="${n.y}" r="18"/>`);
       out.push(`<circle class="ring" cx="${n.x}" cy="${n.y}" r="${R.core}"/>`);
-      out.push(
-        `<circle class="n" cx="${n.x}" cy="${n.y}" r="${R.core}" fill="${fill}"${glow} style="animation-delay:${t(d)}s"/>`
-      );
-      // the bloom above is blurred through and through, so lay a clean copy over
-      // it — otherwise the centre reads as a smudge rather than a solid mark
-      if (glow) {
-        out.push(
-          `<circle class="n" cx="${n.x}" cy="${n.y}" r="${R.core}" fill="${fill}" style="animation-delay:${t(d)}s"/>`
-        );
-      }
       continue;
     }
 

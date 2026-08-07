@@ -14,13 +14,15 @@
   @keyframes spin{to{transform:rotate(360deg)}}
   @keyframes spinBack{to{transform:rotate(-360deg)}}
   @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.22)}}
-  /* a signal leaving the core and arriving somewhere. Decorative, so unlike
+  /* A signal leaving the core and arriving somewhere. Decorative, so unlike
      everything else it rests hidden — a renderer with no motion should show
-     the structure, not a pile of dots parked at the origin. */
+     the structure, not a pile of dots parked at the origin. It stays dark
+     until a quarter of the way out, so five blooming dots don't pool into an
+     aura around the hollow centre. */
   @keyframes flow{
     0%{offset-distance:0%;opacity:0}
-    14%{opacity:1}
-    82%{opacity:1}
+    26%{opacity:1}
+    84%{opacity:1}
     100%{offset-distance:100%;opacity:0}
   }
 
@@ -32,10 +34,10 @@
   .ring{fill:none;stroke:#ff4444;stroke-width:1.5;opacity:0;animation:ring 3.6s cubic-bezier(.2,.6,.3,1) 3.2s infinite}
   .halo{--o:.55;fill:none;stroke:#ff4444;stroke-width:1.1;stroke-dasharray:2 3.4;opacity:.55;transform-box:fill-box;transform-origin:center;animation:ghost .7s ease-out both,spin 24s linear infinite}
 
-  /* the core: two counter-rotating dashed shells around a solid centre */
-  .shell{--o:.5;fill:none;stroke:#ff4444;opacity:.5;transform-box:fill-box;transform-origin:center}
-  .shell-a{stroke-width:1.1;stroke-dasharray:14 9;animation:ghost .9s ease-out .5s both,spin 34s linear infinite}
-  .shell-b{--o:.34;opacity:.34;stroke-width:.9;stroke-dasharray:2 5;animation:ghost .9s ease-out .7s both,spinBack 21s linear infinite}
+  /* the core: two counter-rotating dashed shells around an empty centre */
+  .shell{--o:.66;fill:none;stroke:#ff4444;opacity:.66;transform-box:fill-box;transform-origin:center}
+  .shell-a{stroke-width:1.3;stroke-dasharray:14 9;animation:ghost .9s ease-out .5s both,spin 34s linear infinite}
+  .shell-b{--o:.44;opacity:.44;stroke-width:.9;stroke-dasharray:2 5;animation:ghost .9s ease-out .7s both,spinBack 21s linear infinite}
   .pulse{opacity:0;fill:#ff4444;animation:flow var(--d,2.6s) cubic-bezier(.55,0,.45,1) var(--t,0s) infinite}
   .leaf-b{transform-box:fill-box;transform-origin:center;animation:breathe 5.5s ease-in-out var(--t,0s) infinite}
   .recv{fill:none;stroke:#ff4444;stroke-width:1.2;opacity:0;transform-box:fill-box;transform-origin:center;animation:ring 2.7s cubic-bezier(.2,.6,.3,1) var(--t,0s) infinite}
@@ -47,7 +49,7 @@
     .leaf-b{animation:none}
   }
 </style>
-<defs><filter id="glow" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="3.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<defs><filter id="glow" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="2.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
 <g fill="#8b949e">
 <circle class="amb" cx="360.1" cy="272.7" r="4.7" opacity="0.13" style="--o:0.13;animation-delay:0s,2s"/>
 <circle class="amb" cx="378.5" cy="295" r="3" opacity="0.09" style="--o:0.09;animation-delay:0.03s,2.19s"/>
@@ -118,8 +120,6 @@
 <circle class="shell shell-a" cx="450" cy="240" r="27"/>
 <circle class="shell shell-b" cx="450" cy="240" r="18"/>
 <circle class="ring" cx="450" cy="240" r="11"/>
-<circle class="n" cx="450" cy="240" r="11" fill="#ff4444" filter="url(#glow)" style="animation-delay:0.15s"/>
-<circle class="n" cx="450" cy="240" r="11" fill="#ff4444" style="animation-delay:0.15s"/>
 <circle class="recv" cx="452" cy="104" r="7" style="--t:5.65s"/>
 <circle class="n" cx="452" cy="104" r="7" fill="#c9d1d9" style="animation-delay:1.05s"/>
 <text class="l" x="452" y="88" text-anchor="middle" fill="#e6edf3" font-size="9.5" font-weight="600" style="animation-delay:1.19s"><tspan class="num">01</tspan>&#160;&#160;SYSTEMS</text>
