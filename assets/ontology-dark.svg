@@ -12,6 +12,17 @@
   @keyframes ring{0%{opacity:.45;transform:scale(1)}70%,100%{opacity:0;transform:scale(3.4)}}
   @keyframes drift{0%,100%{opacity:var(--o,1)}50%{opacity:calc(var(--o,1)*1.7)}}
   @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes spinBack{to{transform:rotate(-360deg)}}
+  @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.22)}}
+  /* a signal leaving the core and arriving somewhere. Decorative, so unlike
+     everything else it rests hidden — a renderer with no motion should show
+     the structure, not a pile of dots parked at the origin. */
+  @keyframes flow{
+    0%{offset-distance:0%;opacity:0}
+    14%{opacity:1}
+    82%{opacity:1}
+    100%{offset-distance:100%;opacity:0}
+  }
 
   .e{stroke:#484f58;stroke-width:1.15;stroke-dasharray:1;animation:draw .9s cubic-bezier(.4,0,.2,1) both}
   .x{stroke:#6e7681;stroke-width:1;stroke-dasharray:1.5 5;animation:ghost 1s ease-out both,ants 1.9s linear infinite}
@@ -21,11 +32,22 @@
   .ring{fill:none;stroke:#ff4444;stroke-width:1.5;opacity:0;animation:ring 3.6s cubic-bezier(.2,.6,.3,1) 3.2s infinite}
   .halo{--o:.55;fill:none;stroke:#ff4444;stroke-width:1.1;stroke-dasharray:2 3.4;opacity:.55;transform-box:fill-box;transform-origin:center;animation:ghost .7s ease-out both,spin 24s linear infinite}
 
+  /* the core: two counter-rotating dashed shells around a solid centre */
+  .shell{--o:.5;fill:none;stroke:#ff4444;opacity:.5;transform-box:fill-box;transform-origin:center}
+  .shell-a{stroke-width:1.1;stroke-dasharray:14 9;animation:ghost .9s ease-out .5s both,spin 34s linear infinite}
+  .shell-b{--o:.34;opacity:.34;stroke-width:.9;stroke-dasharray:2 5;animation:ghost .9s ease-out .7s both,spinBack 21s linear infinite}
+  .pulse{opacity:0;fill:#ff4444;animation:flow var(--d,2.6s) cubic-bezier(.55,0,.45,1) var(--t,0s) infinite}
+  .leaf-b{transform-box:fill-box;transform-origin:center;animation:breathe 5.5s ease-in-out var(--t,0s) infinite}
+  .recv{fill:none;stroke:#ff4444;stroke-width:1.2;opacity:0;transform-box:fill-box;transform-origin:center;animation:ring 2.7s cubic-bezier(.2,.6,.3,1) var(--t,0s) infinite}
+  .num{fill:#ff4444;opacity:.75;font-size:6.4px;letter-spacing:.18em}
+
   @media (prefers-reduced-motion:reduce){
-    .n,.l,.e,.x,.amb,.halo{animation-duration:1ms!important;animation-delay:0ms!important;animation-iteration-count:1!important}
-    .ring{display:none}
+    .n,.l,.e,.x,.amb,.halo,.shell{animation-duration:1ms!important;animation-delay:0ms!important;animation-iteration-count:1!important}
+    .ring,.pulse,.recv{display:none}
+    .leaf-b{animation:none}
   }
 </style>
+<defs><filter id="glow" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="3.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
 <g fill="#8b949e">
 <circle class="amb" cx="360.1" cy="272.7" r="4.7" opacity="0.13" style="--o:0.13;animation-delay:0s,2s"/>
 <circle class="amb" cx="378.5" cy="295" r="3" opacity="0.09" style="--o:0.09;animation-delay:0.03s,2.19s"/>
@@ -63,11 +85,11 @@
 <path class="x" d="M268.5 162.7Q345.1 104.0 441.5 107.3" opacity=".5" style="--o:.5;animation-delay:3.18s,0s"/>
 <path class="x" d="M601.0 351.9Q456.4 399.6 313.0 348.1" opacity=".5" style="--o:.5;animation-delay:3.32s,0s"/>
 <path class="x" d="M803.4 239.6Q749.5 308.7 750.6 396.4" opacity=".5" style="--o:.5;animation-delay:3.46s,0s"/>
-<path class="e" d="M450.2 225.0Q437.4 169.8 451.8 115.0" pathLength="1" style="animation-delay:0.45s"/>
-<path class="e" d="M436.0 234.6Q344.7 221.5 268.3 170.0" pathLength="1" style="animation-delay:0.58s"/>
-<path class="e" d="M464.2 235.1Q544.1 185.6 637.6 175.6" pathLength="1" style="animation-delay:0.71s"/>
-<path class="e" d="M437.9 248.8Q363.6 280.4 310.9 341.5" pathLength="1" style="animation-delay:0.84s"/>
-<path class="e" d="M462.3 248.5Q543.8 280.9 603.0 345.7" pathLength="1" style="animation-delay:0.97s"/>
+<path class="e" d="M450.5 208.0Q437.6 161.3 451.8 115.0" pathLength="1" style="animation-delay:0.45s"/>
+<path class="e" d="M420.1 228.5Q336.8 218.4 268.3 170.0" pathLength="1" style="animation-delay:0.58s"/>
+<path class="e" d="M480.3 229.6Q552.1 182.8 637.6 175.6" pathLength="1" style="animation-delay:0.71s"/>
+<path class="e" d="M424.2 258.9Q356.7 285.4 310.9 341.5" pathLength="1" style="animation-delay:0.84s"/>
+<path class="e" d="M476.3 258.2Q550.8 285.8 603.0 345.7" pathLength="1" style="animation-delay:0.97s"/>
 <path class="e" d="M441.5 100.7Q394.5 68.7 337.6 68.4" pathLength="1" opacity=".75" style="--o:.75;stroke-width:.9;animation-delay:1.5s"/>
 <path class="e" d="M462.3 100.2Q515.9 97.3 558.5 64.8" pathLength="1" opacity=".75" style="--o:.75;stroke-width:.9;animation-delay:1.59s"/>
 <path class="e" d="M248.9 159.9Q211.4 113.9 154.6 96.5" pathLength="1" opacity=".75" style="--o:.75;stroke-width:.9;animation-delay:1.68s"/>
@@ -78,38 +100,60 @@
 <path class="e" d="M306.6 358.0Q311.5 397.6 338.6 426.7" pathLength="1" opacity=".75" style="--o:.75;stroke-width:.9;animation-delay:2.13s"/>
 <path class="e" d="M622.3 355.9Q688.2 360.9 740.5 401.1" pathLength="1" opacity=".75" style="--o:.75;stroke-width:.9;animation-delay:2.22s"/>
 <path class="e" d="M605.7 361.0Q570.0 388.4 556.6 431.4" pathLength="1" opacity=".75" style="--o:.75;stroke-width:.9;animation-delay:2.31s"/>
+<circle class="pulse" r="2.4" filter="url(#glow)" style="offset-path:path('M450.5 208.0Q437.6 161.3 451.8 115.0');--d:2.7s;--t:3.1s"/>
+<circle class="pulse" r="2.4" filter="url(#glow)" style="offset-path:path('M420.1 228.5Q336.8 218.4 268.3 170.0');--d:2.7s;--t:3.64s"/>
+<circle class="pulse" r="2.4" filter="url(#glow)" style="offset-path:path('M480.3 229.6Q552.1 182.8 637.6 175.6');--d:2.7s;--t:4.18s"/>
+<circle class="pulse" r="2.4" filter="url(#glow)" style="offset-path:path('M424.2 258.9Q356.7 285.4 310.9 341.5');--d:2.7s;--t:4.72s"/>
+<circle class="pulse" r="2.4" filter="url(#glow)" style="offset-path:path('M476.3 258.2Q550.8 285.8 603.0 345.7');--d:2.7s;--t:5.26s"/>
+<circle class="pulse" r="1.5" style="offset-path:path('M441.5 100.7Q394.5 68.7 337.6 68.4');--d:2.1s;--t:4.2s"/>
+<circle class="pulse" r="1.5" style="offset-path:path('M462.3 100.2Q515.9 97.3 558.5 64.8');--d:2.1s;--t:4.83s"/>
+<circle class="pulse" r="1.5" style="offset-path:path('M248.9 159.9Q211.4 113.9 154.6 96.5');--d:2.1s;--t:5.46s"/>
+<circle class="pulse" r="1.5" style="offset-path:path('M248.6 171.8Q199.6 226.5 128.8 245.8');--d:2.1s;--t:6.09s"/>
+<circle class="pulse" r="1.5" style="offset-path:path('M657.9 167.3Q712.5 118.6 784.8 107.4');--d:2.1s;--t:6.72s"/>
+<circle class="pulse" r="1.5" style="offset-path:path('M658.3 175.9Q736.2 182.0 798.5 229.2');--d:2.1s;--t:7.35s"/>
+<circle class="pulse" r="1.5" style="offset-path:path('M291.5 351.1Q228.4 351.0 175.7 385.7');--d:2.1s;--t:7.98s"/>
+<circle class="pulse" r="1.5" style="offset-path:path('M306.6 358.0Q311.5 397.6 338.6 426.7');--d:2.1s;--t:8.61s"/>
+<circle class="pulse" r="1.5" style="offset-path:path('M622.3 355.9Q688.2 360.9 740.5 401.1');--d:2.1s;--t:9.24s"/>
+<circle class="pulse" r="1.5" style="offset-path:path('M605.7 361.0Q570.0 388.4 556.6 431.4');--d:2.1s;--t:9.87s"/>
+<circle class="shell shell-a" cx="450" cy="240" r="27"/>
+<circle class="shell shell-b" cx="450" cy="240" r="18"/>
 <circle class="ring" cx="450" cy="240" r="11"/>
+<circle class="n" cx="450" cy="240" r="11" fill="#ff4444" filter="url(#glow)" style="animation-delay:0.15s"/>
 <circle class="n" cx="450" cy="240" r="11" fill="#ff4444" style="animation-delay:0.15s"/>
-<text class="l" x="450" y="267" text-anchor="middle" fill="#e6edf3" font-size="13" font-weight="600" letter-spacing=".3em" style="animation-delay:0.29s">FARHAD</text>
+<circle class="recv" cx="452" cy="104" r="7" style="--t:5.65s"/>
 <circle class="n" cx="452" cy="104" r="7" fill="#c9d1d9" style="animation-delay:1.05s"/>
-<text class="l" x="452" y="88" text-anchor="middle" fill="#e6edf3" font-size="9.5" font-weight="600" style="animation-delay:1.19s">SYSTEMS</text>
+<text class="l" x="452" y="88" text-anchor="middle" fill="#e6edf3" font-size="9.5" font-weight="600" style="animation-delay:1.19s"><tspan class="num">01</tspan>&#160;&#160;SYSTEMS</text>
+<circle class="recv" cx="258" cy="166" r="7" style="--t:6.19s"/>
 <circle class="n" cx="258" cy="166" r="7" fill="#c9d1d9" style="animation-delay:1.18s"/>
-<text class="l" x="242" y="169.5" text-anchor="end" fill="#e6edf3" font-size="9.5" font-weight="600" style="animation-delay:1.32s">iOS</text>
+<text class="l" x="242" y="169.5" text-anchor="end" fill="#e6edf3" font-size="9.5" font-weight="600" style="animation-delay:1.32s"><tspan class="num">02</tspan>&#160;&#160;iOS</text>
 <circle class="halo" cx="648" cy="172" r="12.5" style="animation-delay:1.51s"/>
+<circle class="recv" cx="648" cy="172" r="7" style="--t:6.73s"/>
 <circle class="n" cx="648" cy="172" r="7" fill="#c9d1d9" style="animation-delay:1.31s"/>
-<text class="l" x="664" y="175.5" text-anchor="start" fill="#e6edf3" font-size="9.5" font-weight="600" style="animation-delay:1.45s">ONTOLOGY</text>
+<text class="l" x="664" y="175.5" text-anchor="start" fill="#e6edf3" font-size="9.5" font-weight="600" style="animation-delay:1.45s"><tspan class="num">03</tspan>&#160;&#160;ONTOLOGY</text>
+<circle class="recv" cx="302" cy="348" r="7" style="--t:7.27s"/>
 <circle class="n" cx="302" cy="348" r="7" fill="#c9d1d9" style="animation-delay:1.44s"/>
-<text class="l" x="286" y="351.5" text-anchor="end" fill="#e6edf3" font-size="9.5" font-weight="600" style="animation-delay:1.58s">MACHINE LEARNING</text>
+<text class="l" x="286" y="351.5" text-anchor="end" fill="#e6edf3" font-size="9.5" font-weight="600" style="animation-delay:1.58s"><tspan class="num">04</tspan>&#160;&#160;MACHINE LEARNING</text>
+<circle class="recv" cx="612" cy="352" r="7" style="--t:7.81s"/>
 <circle class="n" cx="612" cy="352" r="7" fill="#c9d1d9" style="animation-delay:1.57s"/>
-<text class="l" x="628" y="355.5" text-anchor="start" fill="#e6edf3" font-size="9.5" font-weight="600" style="animation-delay:1.71s">DATA</text>
-<circle class="n" cx="330" cy="66" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.05s"/>
+<text class="l" x="628" y="355.5" text-anchor="start" fill="#e6edf3" font-size="9.5" font-weight="600" style="animation-delay:1.71s"><tspan class="num">05</tspan>&#160;&#160;DATA</text>
+<g class="leaf-b" style="--t:2.36s"><circle class="n" cx="330" cy="66" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.05s"/></g>
 <text class="l" x="330" y="52.8" text-anchor="middle" fill="#8b949e" font-size="7.6" font-weight="400" style="animation-delay:2.19s">NEXT.JS</text>
-<circle class="n" cx="566" cy="62" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.14s"/>
+<g class="leaf-b" style="--t:4s"><circle class="n" cx="566" cy="62" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.14s"/></g>
 <text class="l" x="566" y="48.8" text-anchor="middle" fill="#8b949e" font-size="7.6" font-weight="400" style="animation-delay:2.28s">DOCKER</text>
-<circle class="n" cx="148" cy="92" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.23s"/>
+<g class="leaf-b" style="--t:2.54s"><circle class="n" cx="148" cy="92" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.23s"/></g>
 <text class="l" x="148" y="78.8" text-anchor="middle" fill="#8b949e" font-size="7.6" font-weight="400" style="animation-delay:2.37s">SWIFT</text>
-<circle class="n" cx="122" cy="250" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.32s"/>
+<g class="leaf-b" style="--t:3.25s"><circle class="n" cx="122" cy="250" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.32s"/></g>
 <text class="l" x="108.8" y="253.5" text-anchor="end" fill="#8b949e" font-size="7.6" font-weight="400" style="animation-delay:2.46s">SWIFTUI</text>
-<circle class="n" cx="792" cy="104" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.41s"/>
+<g class="leaf-b" style="--t:2.72s"><circle class="n" cx="792" cy="104" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.41s"/></g>
 <text class="l" x="792" y="90.8" text-anchor="middle" fill="#8b949e" font-size="7.6" font-weight="400" style="animation-delay:2.55s">KNOWLEDGE GRAPH</text>
-<circle class="n" cx="806" cy="232" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.5s"/>
+<g class="leaf-b" style="--t:2.81s"><circle class="n" cx="806" cy="232" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.5s"/></g>
 <text class="l" x="806" y="252.2" text-anchor="middle" fill="#8b949e" font-size="7.6" font-weight="400" style="animation-delay:2.64s">SEMANTIC LAYER</text>
-<circle class="n" cx="168" cy="388" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.59s"/>
+<g class="leaf-b" style="--t:2.59s"><circle class="n" cx="168" cy="388" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.59s"/></g>
 <text class="l" x="154.8" y="391.5" text-anchor="end" fill="#8b949e" font-size="7.6" font-weight="400" style="animation-delay:2.73s">PYTHON</text>
-<circle class="n" cx="342" cy="434" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.68s"/>
+<g class="leaf-b" style="--t:4.54s"><circle class="n" cx="342" cy="434" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.68s"/></g>
 <text class="l" x="342" y="454.2" text-anchor="middle" fill="#8b949e" font-size="7.6" font-weight="400" style="animation-delay:2.82s">TENSORFLOW</text>
-<circle class="n" cx="748" cy="404" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.77s"/>
+<g class="leaf-b" style="--t:4.63s"><circle class="n" cx="748" cy="404" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.77s"/></g>
 <text class="l" x="761.2" y="407.5" text-anchor="start" fill="#8b949e" font-size="7.6" font-weight="400" style="animation-delay:2.91s">GRAPHQL</text>
-<circle class="n" cx="552" cy="438" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.86s"/>
+<g class="leaf-b" style="--t:4.72s"><circle class="n" cx="552" cy="438" r="4.2" fill="#7d8590" opacity=".9" style="--o:.9;animation-delay:2.86s"/></g>
 <text class="l" x="552" y="458.2" text-anchor="middle" fill="#8b949e" font-size="7.6" font-weight="400" style="animation-delay:3s">NEO4J</text>
 </svg>
