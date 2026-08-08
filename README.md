@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=swift,python,ts,firebase,tensorflow,docker,neo4j,graphql&theme=dark" alt="Swift, Python, TypeScript, Firebase, TensorFlow, Docker, Neo4j, GraphQL" />
+    <img src="https://skillicons.dev/icons?i=swift,python,ts,firebase,tensorflow,docker,nextjs,graphql&theme=dark" alt="Swift, Python, TypeScript, Firebase, TensorFlow, Docker, Next.js, GraphQL" />
   </a>
 </p>
 
